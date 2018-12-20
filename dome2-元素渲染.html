@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--凡是用到jsx语法的，都需要加上type="text/babel"属性-->
+    <script type="text/babel">
+    	
+//    const user = 0
+      
+      const user = {
+      	firstName: 'Harper',
+			lastName: 'Perez'
+      }
+    	
+    	function formatName(user) {
+			  return user.firstName + ' ' + user.lastName;
+			}
+				
+				function getGreeting(user) {
+				  if (user) {
+				    return <h1>Hello, {formatName(user)}!</h1>;
+				  }
+				  return <h1>Hello, Stranger.</h1>;
+				}
+					
+//					const element = (
+//					  <h1>
+//					    Hello, {formatName(user)}!
+//					  </h1>
+//					);
+				//这个是可以引入函数去
+					const element = (
+					  getGreeting(user)
+					);
+					
+//					element是jsx语法,下面是需要添加的根节点
+					ReactDOM.render(
+					  element,
+					  document.getElementById('root')
+					)
+					
+				
+////				更新元素渲染	,每秒重新去渲染
+//				var changTime = function() {
+//				const element = (
+//					<div>
+//						It is {new Date().toLocaleTimeString()}
+//					</div>
+//				)
+//				
+//				ReactDOM.render(element, document.querySelector('#root'))
+//			}
+//			
+//			changTime()
+////  	更新元素渲染	,每秒重新去渲染
+//			setInterval(changTime, 1000)
+//			
+////		注意：在实际生产开发中，大多数React应用只会调用一次 ReactDOM.render() 。在下一个章节中我们将会详细介绍 有状态组件 实现 DOM 更新方式。
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>

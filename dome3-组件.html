@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--凡是用到jsx语法的，都需要加上type="text/babel"属性-->
+    <script type="text/babel">
+    	    //			警告:组件名称必须以大写字母开头。
+//			例如，<div /> 表示一个DOM标签，但 <Welcome /> 表示一个组件，并且在使用该组件时你必须定义或引入它。		  
+    
+//			//定义一个组件最简单的方法，就是使用function函数--自定义的组件
+//			function Welcome(props) {
+//				return <div>Hello, {props.name}</div>
+//			}
+//			//接受了一个单一的props对象，并返回一个react元素，称之为函数定义组件
+//			
+//			
+//			var element = <Welcome name="haha"/>
+//			ReactDOM.render(
+//				  element,
+//				  document.getElementById('root')
+//			)
+			
+//			组合组件的使用
+//			function Welcome(props) {
+//			  return <h1>Hello, {props.name}</h1>;
+//			}
+//			
+//			function App() {
+//			  return (
+//			    <div>
+//			      <Welcome name="Sara" />
+//			      <Welcome name="Cahal" />
+//			      <Welcome name="Edite" />
+//			    </div>
+//			  );
+//			}
+//			
+//			ReactDOM.render(
+//			  <App />,
+//			  document.getElementById('root')
+//			);
+
+	
+//								  <img className="Avatar"
+//					          src={props.author.avatarUrl}
+//					          alt={props.author.name}
+//					        />
+//					        <div className="UserInfo-name">
+//					          {props.author.name}
+//					        </div>
+
+////			提取需要的组件(用户信息的组件)
+			var Avatar = function(props) {
+				return (
+					<div>
+						<img className="Avatar"
+		          src={props.avatarUrl}
+		          alt={props.name}
+		        />
+		        <div className="UserInfo-name">
+		          {props.name}
+		        </div>
+					</div>
+				)
+			}
+			
+//			提取组件（最外面的组件）
+				function Comment(props) {
+					  return (
+					    <div className="Comment">
+					      <div className="UserInfo">
+										{Avatar(props.author)}
+					      </div>
+					      <div className="Comment-text">
+					        {props.text}
+					      </div>
+					    </div>
+					  );
+					}
+			
+			//用户信息对象
+			var user = {
+				author: {
+					avatarUrl: 'https://static.zuiqiangyingyu.cn/admin/1811/caigebobo2018112301.png',
+					name: 'haha',
+				},
+				text: 'textContent',
+			}
+			
+			//获取的APP
+			function App() {
+			  return (
+			    <div>
+			    	{Comment(user)}
+			    </div>
+			  );
+			}
+			ReactDOM.render(
+			  <App />,
+			  document.getElementById('root')
+			);
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>
